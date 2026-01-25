@@ -1,0 +1,13 @@
+package cpm.knownniu.epay_spring_boot_starter;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class EpaySpringBootStarterApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
