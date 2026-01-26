@@ -1,20 +1,17 @@
-package cpm.knownniu.epay_spring_boot_starter.service;
+package com.knownniu.epay_spring_boot_starter.service;
 
 import java.util.Map;
 import java.util.TreeMap;
 
-import cpm.knownniu.epay_spring_boot_starter.config.EpayProperties;
-import cpm.knownniu.epay_spring_boot_starter.core.EpayCore;
-import cpm.knownniu.epay_spring_boot_starter.request.pagePayRequest;
+import com.knownniu.epay_spring_boot_starter.core.EpayCore;
+import com.knownniu.epay_spring_boot_starter.request.pagePayRequest;
 
 public class EpayService {
 
     private final EpayCore core;
-    private final EpayProperties properties;
 
-    public EpayService(EpayCore core,EpayProperties properties) {
+    public EpayService(EpayCore core) {
         this.core = core;
-        this.properties = properties;
     }
 
     public String pagePay(pagePayRequest request,String buttonText) {

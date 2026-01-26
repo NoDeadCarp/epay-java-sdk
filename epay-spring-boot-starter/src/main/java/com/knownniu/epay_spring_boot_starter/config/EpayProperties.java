@@ -1,4 +1,4 @@
-package cpm.knownniu.epay_spring_boot_starter.config;
+package com.knownniu.epay_spring_boot_starter.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package cpm.knownniu.epay_spring_boot_starter.util;
+package com.knownniu.epay_spring_boot_starter.util;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -18,8 +18,8 @@ public class php_md5 {
             hex.append(s);
         }
         return hex.toString(); // 小写
-    } catch (Exception e) {
-        throw new RuntimeException("MD5 sign error", e);
-    }
+        } catch (Exception e) {
+            throw new RuntimeException("MD5 sign error", e);
+        }
     }
 }

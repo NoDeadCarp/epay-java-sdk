@@ -1,4 +1,4 @@
-package cpm.knownniu.epay_spring_boot_starter;
+package com.knownniu.epay_spring_boot_starter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

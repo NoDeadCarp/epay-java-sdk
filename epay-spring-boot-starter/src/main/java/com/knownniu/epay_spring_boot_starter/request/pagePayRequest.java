@@ -1,4 +1,4 @@
-package cpm.knownniu.epay_spring_boot_starter.request;
+package com.knownniu.epay_spring_boot_starter.request;
 
 import java.util.TreeMap;
 

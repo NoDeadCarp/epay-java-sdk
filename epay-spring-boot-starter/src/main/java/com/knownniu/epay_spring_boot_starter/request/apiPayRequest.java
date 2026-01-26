@@ -1,4 +1,4 @@
-package cpm.knownniu.epay_spring_boot_starter.request;
+package com.knownniu.epay_spring_boot_starter.request;
 
 import lombok.Data;
 
@@ -35,5 +35,4 @@ public class apiPayRequest {
         this.clientip = clientip;
         this.device = device;
     }
-    
 }
