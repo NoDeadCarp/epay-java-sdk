@@ -1,5 +1,7 @@
 package cpm.knownniu.epay_spring_boot_starter.request;
 
+import java.util.TreeMap;
+
 import lombok.Data;
 
 @Data
@@ -31,5 +33,21 @@ public class pagePayRequest {
         this.sign = sign;
         this.sign_type = sign_type;
     }
-    
+
+    public TreeMap<String, String> toMap() {
+        TreeMap<String, String> params = new TreeMap<>();
+
+        if (pid != null) params.put("pid", pid);
+        if (type != null) params.put("type", type);
+        if (out_trade_no != null) params.put("out_trade_no", out_trade_no);
+        if (notify_url != null) params.put("notify_url", notify_url);
+        if (return_url != null) params.put("return_url", return_url);
+        if (name != null) params.put("name", name);
+        if (money != null) params.put("money", money);
+        if (param != null) params.put("param", param);
+        if (sign != null) params.put("sign", sign);
+        if (sign_type != null) params.put("sign_type", sign_type);
+
+        return params;
+    }
 }
