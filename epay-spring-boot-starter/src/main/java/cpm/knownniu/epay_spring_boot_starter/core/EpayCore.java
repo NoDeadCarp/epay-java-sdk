@@ -9,6 +9,7 @@ import cpm.knownniu.epay_spring_boot_starter.util.php_md5;
 public class EpayCore {
     
     private final EpayProperties config;
+    private final String signType = "MD5";
 
     public EpayCore(EpayProperties config) {
         this.config = config;
@@ -60,5 +61,13 @@ public class EpayCore {
 
        return php_md5.md5(signStr.toString());
    }
+
+   public Map<String, Object> buildRequestParam(Map<String, String> param) {
+        String mySign = getSign(param, config.getKey());
+        Map<String, Object> result = new TreeMap<>(param);
+        result.put("sign", mySign);
+        result.put("sign_type", signType);
+        return result;
+    }
     
 }
