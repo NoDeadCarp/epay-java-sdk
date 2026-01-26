@@ -2,10 +2,17 @@ package com.knownniu.epay_spring_boot_starter.request;
 
 import java.util.TreeMap;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.knownniu.epay_spring_boot_starter.config.EpayProperties;
+
 import lombok.Data;
 
 @Data
 public class pagePayRequest {
+    @Autowired
+    private EpayProperties epayProperties;
+
     private String pid;
     private String type;
     private String out_trade_no;
@@ -18,7 +25,7 @@ public class pagePayRequest {
     private String sign_type;
 
     public pagePayRequest(){
-
+        this.pid = epayProperties.getPid();
     }
 
     public pagePayRequest(String pid, String type, String out_trade_no, String notify_url, String return_url, String name, String money, String param, String sign, String sign_type) {

@@ -14,11 +14,11 @@ public class http_build_query {
     }
 
     private static String urlEncode(String value) {
-    try {
-        return URLEncoder.encode(value, StandardCharsets.UTF_8.name());
-    } catch (Exception e) {
-        throw new RuntimeException(e);
+        try {
+            return URLEncoder.encode(value, StandardCharsets.UTF_8.name());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
-}
 
 }

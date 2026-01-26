@@ -28,7 +28,7 @@ public class EpayCore {
         return config.getApiUrl() + "/api.php";
     }
 
-    public String getSign(Map<String, String> params, String key) {
+    private String getSign(Map<String, String> params, String key) {
        //  key的ASCII字符串顺序
        TreeMap<String, String> sorted = new TreeMap<>(params);
 

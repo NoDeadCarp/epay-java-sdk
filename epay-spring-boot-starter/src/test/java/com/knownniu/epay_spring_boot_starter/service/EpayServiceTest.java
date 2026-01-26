@@ -24,7 +24,6 @@ public class EpayServiceTest {
     @Test
     public void testPagePay() {
         pagePayRequest request = new pagePayRequest();
-        request.setPid(epayProperties.getPid());
         request.setType("alipay");
         request.setOut_trade_no("test1");
         request.setNotify_url("http://www.example.com/notify");
@@ -40,7 +39,6 @@ public class EpayServiceTest {
     @Test
     public void testGetPayLink() {
         apiPayRequest request = new apiPayRequest();
-        request.setPid(epayProperties.getPid());
         request.setType("wxpay");
         request.setOut_trade_no("test2");
         request.setNotify_url("http://www.example.com/notify");
