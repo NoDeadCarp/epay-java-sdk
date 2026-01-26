@@ -12,17 +12,4 @@ public class EpayProperties {
     private String pid;
     private String key;
     private String apiUrl;
-
-    // 生成不同接口 URL
-    public String getSubmitUrl() {
-        return apiUrl + "submit.php";
-    }
-
-    public String getMapiUrl() {
-        return apiUrl + "mapi.php";
-    }
-
-    public String getApiUrl() {
-        return apiUrl + "api.php";
-    }
 }
