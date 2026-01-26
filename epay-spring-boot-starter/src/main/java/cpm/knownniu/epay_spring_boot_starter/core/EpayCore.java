@@ -10,12 +10,4 @@ public class EpayCore {
         this.config = config;
     }
 
-    public String getSubmitUrl() {
-        return config.getSubmitUrl();
-    }
-
-    public String getMapiUrl() {
-        return config.getMapiUrl();
-    }
-
 }
