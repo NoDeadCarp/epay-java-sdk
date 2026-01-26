@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.knownniu.epay_spring_boot_starter.config.EpayProperties;
 import com.knownniu.epay_spring_boot_starter.request.apiPayRequest;
 import com.knownniu.epay_spring_boot_starter.request.pagePayRequest;
+import com.knownniu.epay_spring_boot_starter.response.apiPayResponse;
 
 @SpringBootTest
 public class EpayServiceTest {
@@ -24,6 +25,7 @@ public class EpayServiceTest {
     @Test
     public void testPagePay() {
         pagePayRequest request = new pagePayRequest();
+        request.setPid(epayProperties.getPid());
         request.setType("alipay");
         request.setOut_trade_no("test1");
         request.setNotify_url("http://www.example.com/notify");
@@ -39,6 +41,7 @@ public class EpayServiceTest {
     @Test
     public void testGetPayLink() {
         pagePayRequest request = new pagePayRequest();
+        request.setPid(epayProperties.getPid());
         request.setType("wxpay");
         request.setOut_trade_no("test2");
         request.setNotify_url("http://www.example.com/notify");
@@ -49,5 +52,23 @@ public class EpayServiceTest {
 
         String url = epayService.getPayLink(request);
         log.info(url);
+    }
+
+    @Test
+    public void testApiPay() {
+        apiPayRequest request = new apiPayRequest();
+        request.setPid(epayProperties.getPid());
+        request.setType("wxpay");
+        request.setOut_trade_no("test3");
+        request.setNotify_url("http://www.example.com/notify");
+        request.setReturn_url("http://www.example.com/return");
+        request.setName("Test Product");
+        request.setMoney("10.00");
+        request.setParam("test_param");
+        request.setClientip("127.0.0.1");
+        request.setDevice("pc");
+
+        apiPayResponse ApiPayResponse = epayService.apiPay(request);
+        System.out.println(ApiPayResponse.toString());
     }
 }

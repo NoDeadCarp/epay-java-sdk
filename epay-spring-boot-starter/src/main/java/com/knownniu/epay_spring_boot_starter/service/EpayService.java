@@ -3,6 +3,7 @@ package com.knownniu.epay_spring_boot_starter.service;
 import java.util.Map;
 import java.util.TreeMap;
 
+import com.knownniu.epay_spring_boot_starter.client.EpayClient;
 import com.knownniu.epay_spring_boot_starter.core.EpayCore;
 import com.knownniu.epay_spring_boot_starter.request.pagePayRequest;
 import com.knownniu.epay_spring_boot_starter.response.apiPayResponse;
@@ -11,9 +12,11 @@ import com.knownniu.epay_spring_boot_starter.request.apiPayRequest;
 public class EpayService {
 
     private final EpayCore core;
+    private final EpayClient client;
 
-    public EpayService(EpayCore core) {
+    public EpayService(EpayCore core,EpayClient client) {
         this.core = core;
+        this.client = client;
     }
 
     public String pagePay(pagePayRequest request,String buttonText) {
@@ -61,6 +64,9 @@ public class EpayService {
     }
 
     public apiPayResponse apiPay(apiPayRequest request) {
-
+        TreeMap<String, String> params = request.toMap();
+        params = core.buildRequestParam(params);
+        apiPayResponse ApiPayResponse = client.pay(params);
+        return ApiPayResponse;
     }
 }

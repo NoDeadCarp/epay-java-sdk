@@ -2,16 +2,14 @@ package com.knownniu.epay_spring_boot_starter.request;
 
 import java.util.TreeMap;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.knownniu.epay_spring_boot_starter.config.EpayProperties;
-
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class pagePayRequest {
-    @Autowired
-    private EpayProperties epayProperties;
 
     private String pid;
     private String type;
@@ -23,23 +21,6 @@ public class pagePayRequest {
     private String param;
     private String sign;
     private String sign_type;
-
-    public pagePayRequest(){
-        this.pid = epayProperties.getPid();
-    }
-
-    public pagePayRequest(String pid, String type, String out_trade_no, String notify_url, String return_url, String name, String money, String param, String sign, String sign_type) {
-        this.pid = pid;
-        this.type = type;
-        this.out_trade_no = out_trade_no;
-        this.notify_url = notify_url;
-        this.return_url = return_url;
-        this.name = name;
-        this.money = money;
-        this.param = param;
-        this.sign = sign;
-        this.sign_type = sign_type;
-    }
 
     public TreeMap<String, String> toMap() {
         TreeMap<String, String> params = new TreeMap<>();
