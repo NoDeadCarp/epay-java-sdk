@@ -6,7 +6,9 @@ import java.util.TreeMap;
 import com.knownniu.epay_spring_boot_starter.client.EpayClient;
 import com.knownniu.epay_spring_boot_starter.core.EpayCore;
 import com.knownniu.epay_spring_boot_starter.request.pagePayRequest;
+import com.knownniu.epay_spring_boot_starter.request.queryOrderRequest;
 import com.knownniu.epay_spring_boot_starter.response.apiPayResponse;
+import com.knownniu.epay_spring_boot_starter.response.queryOrderResponse;
 import com.knownniu.epay_spring_boot_starter.request.apiPayRequest;
 
 public class EpayService {
@@ -68,5 +70,11 @@ public class EpayService {
         params = core.buildRequestParam(params);
         apiPayResponse ApiPayResponse = client.pay(params);
         return ApiPayResponse;
+    }
+
+    public queryOrderResponse queryOrder(queryOrderRequest request) {
+        TreeMap<String, String> params = request.toMap();
+        queryOrderResponse QueryOrderResponse = client.queryOrder(params);
+        return QueryOrderResponse;
     }
 }

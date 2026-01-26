@@ -3,6 +3,7 @@ package com.knownniu.epay_spring_boot_starter.client;
 import java.util.Map;
 
 import com.knownniu.epay_spring_boot_starter.response.apiPayResponse;
+import com.knownniu.epay_spring_boot_starter.response.queryOrderResponse;
 
 import feign.Headers;
 import feign.QueryMap;
@@ -14,5 +15,9 @@ public interface EpayClient {
     @RequestLine("POST /mapi.php")
     @Headers("Accept: text/html;charset=utf-8")
     apiPayResponse pay(@QueryMap Map<String, String> params);
+
+    @RequestLine("POST /api.php")
+    @Headers("Accept: text/html;charset=utf-8")
+    queryOrderResponse queryOrder(@QueryMap Map<String, String> params);
 
 }

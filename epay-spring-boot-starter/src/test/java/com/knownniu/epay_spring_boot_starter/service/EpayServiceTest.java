@@ -10,7 +10,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.knownniu.epay_spring_boot_starter.config.EpayProperties;
 import com.knownniu.epay_spring_boot_starter.request.apiPayRequest;
 import com.knownniu.epay_spring_boot_starter.request.pagePayRequest;
+import com.knownniu.epay_spring_boot_starter.request.queryOrderRequest;
 import com.knownniu.epay_spring_boot_starter.response.apiPayResponse;
+import com.knownniu.epay_spring_boot_starter.response.queryOrderResponse;
 
 @SpringBootTest
 public class EpayServiceTest {
@@ -69,6 +71,18 @@ public class EpayServiceTest {
         request.setDevice("pc");
 
         apiPayResponse ApiPayResponse = epayService.apiPay(request);
-        System.out.println(ApiPayResponse.toString());
+        log.info(ApiPayResponse.toString());
+    }
+
+    @Test
+    public void testQueryOrder() {
+        queryOrderRequest request = new queryOrderRequest();
+        request.setAct("order");
+        request.setPid(epayProperties.getPid());
+        request.setKey(epayProperties.getKey());
+        request.setOut_trade_no("test3");
+
+        queryOrderResponse QueryOrderResponse = epayService.queryOrder(request);
+        log.info(QueryOrderResponse.toString());
     }
 }
