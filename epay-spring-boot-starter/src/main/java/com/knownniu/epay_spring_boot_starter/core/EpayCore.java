@@ -5,6 +5,7 @@ import java.util.TreeMap;
 
 import com.knownniu.epay_spring_boot_starter.config.EpayProperties;
 import com.knownniu.epay_spring_boot_starter.util.php_md5;
+import com.knownniu.epay_spring_boot_starter.util.http_build_query;
 
 public class EpayCore {
     
@@ -70,4 +71,8 @@ public class EpayCore {
         return result;
     }
     
+    public String buildRequestURLParam(Map<String, String> params) {
+        return http_build_query.encode(params);
+    }
+
 }

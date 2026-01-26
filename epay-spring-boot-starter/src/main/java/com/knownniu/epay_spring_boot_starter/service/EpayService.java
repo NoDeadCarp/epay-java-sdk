@@ -5,6 +5,7 @@ import java.util.TreeMap;
 
 import com.knownniu.epay_spring_boot_starter.core.EpayCore;
 import com.knownniu.epay_spring_boot_starter.request.pagePayRequest;
+import com.knownniu.epay_spring_boot_starter.request.apiPayRequest;
 
 public class EpayService {
 
@@ -45,6 +46,17 @@ public class EpayService {
 
         return html.toString();
 
+    }
+
+    public String getPayLink(apiPayRequest request) {
+        TreeMap<String, String> params = request.toMap();
+        params = core.buildRequestParam(params);
+
+        StringBuffer url = new StringBuffer();
+        url.append(core.getSubmitUrl());
+        url.append("?");
+        url.append(core.buildRequestURLParam(params));
+        return url.toString();
     }
 
 }
