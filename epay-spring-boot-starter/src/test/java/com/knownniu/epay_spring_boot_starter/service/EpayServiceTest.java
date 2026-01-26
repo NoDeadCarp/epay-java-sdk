@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.knownniu.epay_spring_boot_starter.config.EpayProperties;
 import com.knownniu.epay_spring_boot_starter.request.apiPayRequest;
 import com.knownniu.epay_spring_boot_starter.request.pagePayRequest;
 
@@ -17,20 +18,20 @@ public class EpayServiceTest {
 
     @Autowired
     private EpayService epayService;
+    @Autowired
+    private EpayProperties epayProperties;
 
     @Test
     public void testPagePay() {
         pagePayRequest request = new pagePayRequest();
-        request.setPid("1000");
+        request.setPid(epayProperties.getPid());
         request.setType("alipay");
-        request.setOut_trade_no("TEST123456");
+        request.setOut_trade_no("test1");
         request.setNotify_url("http://www.example.com/notify");
         request.setReturn_url("http://www.example.com/return");
         request.setName("Test Product");
         request.setMoney("10.00");
         request.setParam("test_param");
-        request.setSign("test_sign");
-        request.setSign_type("MD5");
 
         String htmlForm = epayService.pagePay(request, "Pay Now");
         log.info("生成的HTML表单:\n{}", htmlForm);
@@ -39,16 +40,14 @@ public class EpayServiceTest {
     @Test
     public void testGetPayLink() {
         apiPayRequest request = new apiPayRequest();
-        request.setPid("1000");
-        request.setType("alipay");
-        request.setOut_trade_no("TEST123456");
+        request.setPid(epayProperties.getPid());
+        request.setType("wxpay");
+        request.setOut_trade_no("test2");
         request.setNotify_url("http://www.example.com/notify");
         request.setReturn_url("http://www.example.com/return");
         request.setName("Test Product");
         request.setMoney("10.00");
         request.setParam("test_param");
-        request.setSign("test_sign");
-        request.setSign_type("MD5");
         request.setClientip("127.0.0.1");
         request.setDevice("OnePlus");
 
