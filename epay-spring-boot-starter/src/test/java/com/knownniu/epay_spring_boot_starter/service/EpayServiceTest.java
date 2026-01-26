@@ -38,7 +38,7 @@ public class EpayServiceTest {
 
     @Test
     public void testGetPayLink() {
-        apiPayRequest request = new apiPayRequest();
+        pagePayRequest request = new pagePayRequest();
         request.setType("wxpay");
         request.setOut_trade_no("test2");
         request.setNotify_url("http://www.example.com/notify");
@@ -46,8 +46,6 @@ public class EpayServiceTest {
         request.setName("Test Product");
         request.setMoney("10.00");
         request.setParam("test_param");
-        request.setClientip("127.0.0.1");
-        request.setDevice("OnePlus");
 
         String url = epayService.getPayLink(request);
         log.info(url);
