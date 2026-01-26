@@ -62,9 +62,9 @@ public class EpayCore {
        return php_md5.md5(signStr.toString());
    }
 
-   public Map<String, Object> buildRequestParam(Map<String, String> param) {
+   public TreeMap<String, String> buildRequestParam(TreeMap<String, String> param) {
         String mySign = getSign(param, config.getKey());
-        Map<String, Object> result = new TreeMap<>(param);
+        TreeMap<String, String> result = new TreeMap<>(param);
         result.put("sign", mySign);
         result.put("sign_type", signType);
         return result;
