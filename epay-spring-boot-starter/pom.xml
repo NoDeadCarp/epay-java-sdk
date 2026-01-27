@@ -8,7 +8,7 @@
 		<version>4.0.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>cpm.knownniu</groupId>
+	<groupId>com.knownniu</groupId>
 	<artifactId>epay-spring-boot-starter</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>epay-spring-boot-starter</name>
