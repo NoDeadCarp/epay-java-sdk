@@ -7,10 +7,12 @@ import com.knownniu.epay_spring_boot_starter.client.EpayClient;
 import com.knownniu.epay_spring_boot_starter.core.EpayCore;
 import com.knownniu.epay_spring_boot_starter.request.pagePayRequest;
 import com.knownniu.epay_spring_boot_starter.request.queryOrderRequest;
+import com.knownniu.epay_spring_boot_starter.request.queryOrdersRequest;
 import com.knownniu.epay_spring_boot_starter.request.queryPidInfoRequest;
 import com.knownniu.epay_spring_boot_starter.request.querySettleRequest;
 import com.knownniu.epay_spring_boot_starter.response.apiPayResponse;
 import com.knownniu.epay_spring_boot_starter.response.queryOrderResponse;
+import com.knownniu.epay_spring_boot_starter.response.queryOrdersResponse;
 import com.knownniu.epay_spring_boot_starter.response.queryPidInfoResponse;
 import com.knownniu.epay_spring_boot_starter.response.querySettleResponse;
 import com.knownniu.epay_spring_boot_starter.request.apiPayRequest;
@@ -98,5 +100,12 @@ public class EpayService {
         TreeMap<String, String> params = request.toMap();
         querySettleResponse QuerySettleResponse = client.querySettle(params);
         return QuerySettleResponse;
+    }
+
+    // 批量查询订单
+    public queryOrdersResponse queryOrders(queryOrdersRequest request) {
+        TreeMap<String, String> params = request.toMap();
+        queryOrdersResponse QueryOrdersResponse = client.queryOrders(params);
+        return QueryOrdersResponse;
     }
 }

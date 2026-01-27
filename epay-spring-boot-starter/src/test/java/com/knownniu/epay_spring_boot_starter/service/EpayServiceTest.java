@@ -11,10 +11,12 @@ import com.knownniu.epay_spring_boot_starter.config.EpayProperties;
 import com.knownniu.epay_spring_boot_starter.request.apiPayRequest;
 import com.knownniu.epay_spring_boot_starter.request.pagePayRequest;
 import com.knownniu.epay_spring_boot_starter.request.queryOrderRequest;
+import com.knownniu.epay_spring_boot_starter.request.queryOrdersRequest;
 import com.knownniu.epay_spring_boot_starter.request.queryPidInfoRequest;
 import com.knownniu.epay_spring_boot_starter.request.querySettleRequest;
 import com.knownniu.epay_spring_boot_starter.response.apiPayResponse;
 import com.knownniu.epay_spring_boot_starter.response.queryOrderResponse;
+import com.knownniu.epay_spring_boot_starter.response.queryOrdersResponse;
 import com.knownniu.epay_spring_boot_starter.response.queryPidInfoResponse;
 import com.knownniu.epay_spring_boot_starter.response.querySettleResponse;
 
@@ -110,5 +112,18 @@ public class EpayServiceTest {
 
         querySettleResponse QuerySettleResponse = epayService.querySettle(request);
         log.info(QuerySettleResponse.toString());
+    }
+
+    @Test
+    public void testQueryOrders() {
+        queryOrdersRequest request = new queryOrdersRequest();
+        request.setAct("orders");
+        request.setPid(epayProperties.getPid());
+        request.setKey(epayProperties.getKey());
+        request.setLimit("1");
+        request.setPage("1");
+
+        queryOrdersResponse QueryOrdersResponse = epayService.queryOrders(request);
+        log.info(QueryOrdersResponse.toString());
     }
 }
