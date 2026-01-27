@@ -11,8 +11,10 @@ import com.knownniu.epay_spring_boot_starter.config.EpayProperties;
 import com.knownniu.epay_spring_boot_starter.request.apiPayRequest;
 import com.knownniu.epay_spring_boot_starter.request.pagePayRequest;
 import com.knownniu.epay_spring_boot_starter.request.queryOrderRequest;
+import com.knownniu.epay_spring_boot_starter.request.queryPidInfoRequest;
 import com.knownniu.epay_spring_boot_starter.response.apiPayResponse;
 import com.knownniu.epay_spring_boot_starter.response.queryOrderResponse;
+import com.knownniu.epay_spring_boot_starter.response.queryPidInfoResponse;
 
 @SpringBootTest
 public class EpayServiceTest {
@@ -84,5 +86,16 @@ public class EpayServiceTest {
 
         queryOrderResponse QueryOrderResponse = epayService.queryOrder(request);
         log.info(QueryOrderResponse.toString());
+    }
+
+    @Test
+    public void testQueryPidInfo() {
+        queryPidInfoRequest request = new queryPidInfoRequest();
+        request.setAct("query");
+        request.setPid(epayProperties.getPid());
+        request.setKey(epayProperties.getKey());
+
+        queryPidInfoResponse QueryPidInfoResponse = epayService.queryPidInfo(request);
+        log.info(QueryPidInfoResponse.toString());
     }
 }

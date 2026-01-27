@@ -7,8 +7,10 @@ import com.knownniu.epay_spring_boot_starter.client.EpayClient;
 import com.knownniu.epay_spring_boot_starter.core.EpayCore;
 import com.knownniu.epay_spring_boot_starter.request.pagePayRequest;
 import com.knownniu.epay_spring_boot_starter.request.queryOrderRequest;
+import com.knownniu.epay_spring_boot_starter.request.queryPidInfoRequest;
 import com.knownniu.epay_spring_boot_starter.response.apiPayResponse;
 import com.knownniu.epay_spring_boot_starter.response.queryOrderResponse;
+import com.knownniu.epay_spring_boot_starter.response.queryPidInfoResponse;
 import com.knownniu.epay_spring_boot_starter.request.apiPayRequest;
 
 public class EpayService {
@@ -21,6 +23,7 @@ public class EpayService {
         this.client = client;
     }
 
+    // 页面支付，返回HTML自动跳转页面
     public String pagePay(pagePayRequest request,String buttonText) {
         // 把DTO转成TreeMap 参数
         TreeMap<String, String> params = request.toMap();
@@ -54,6 +57,7 @@ public class EpayService {
 
     }
 
+    // 获取支付链接
     public String getPayLink(pagePayRequest request) {
         TreeMap<String, String> params = request.toMap();
         params = core.buildRequestParam(params);
@@ -65,6 +69,7 @@ public class EpayService {
         return url.toString();
     }
 
+    // API支付（小程序APP调用）
     public apiPayResponse apiPay(apiPayRequest request) {
         TreeMap<String, String> params = request.toMap();
         params = core.buildRequestParam(params);
@@ -72,9 +77,17 @@ public class EpayService {
         return ApiPayResponse;
     }
 
+    // 查询单个订单
     public queryOrderResponse queryOrder(queryOrderRequest request) {
         TreeMap<String, String> params = request.toMap();
         queryOrderResponse QueryOrderResponse = client.queryOrder(params);
         return QueryOrderResponse;
+    }
+
+    // 查询商户信息
+    public queryPidInfoResponse queryPidInfo(queryPidInfoRequest request) {
+        TreeMap<String, String> params = request.toMap();
+        queryPidInfoResponse QueryPidInfoResponse = client.queryPidInfo(params);
+        return QueryPidInfoResponse;
     }
 }
