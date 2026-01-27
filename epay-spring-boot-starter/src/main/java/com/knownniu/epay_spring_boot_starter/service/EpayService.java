@@ -8,9 +8,11 @@ import com.knownniu.epay_spring_boot_starter.core.EpayCore;
 import com.knownniu.epay_spring_boot_starter.request.pagePayRequest;
 import com.knownniu.epay_spring_boot_starter.request.queryOrderRequest;
 import com.knownniu.epay_spring_boot_starter.request.queryPidInfoRequest;
+import com.knownniu.epay_spring_boot_starter.request.querySettleRequest;
 import com.knownniu.epay_spring_boot_starter.response.apiPayResponse;
 import com.knownniu.epay_spring_boot_starter.response.queryOrderResponse;
 import com.knownniu.epay_spring_boot_starter.response.queryPidInfoResponse;
+import com.knownniu.epay_spring_boot_starter.response.querySettleResponse;
 import com.knownniu.epay_spring_boot_starter.request.apiPayRequest;
 
 public class EpayService {
@@ -89,5 +91,12 @@ public class EpayService {
         TreeMap<String, String> params = request.toMap();
         queryPidInfoResponse QueryPidInfoResponse = client.queryPidInfo(params);
         return QueryPidInfoResponse;
+    }
+
+    // 查询结算记录
+    public querySettleResponse querySettle(querySettleRequest request) {
+        TreeMap<String, String> params = request.toMap();
+        querySettleResponse QuerySettleResponse = client.querySettle(params);
+        return QuerySettleResponse;
     }
 }

@@ -12,9 +12,11 @@ import com.knownniu.epay_spring_boot_starter.request.apiPayRequest;
 import com.knownniu.epay_spring_boot_starter.request.pagePayRequest;
 import com.knownniu.epay_spring_boot_starter.request.queryOrderRequest;
 import com.knownniu.epay_spring_boot_starter.request.queryPidInfoRequest;
+import com.knownniu.epay_spring_boot_starter.request.querySettleRequest;
 import com.knownniu.epay_spring_boot_starter.response.apiPayResponse;
 import com.knownniu.epay_spring_boot_starter.response.queryOrderResponse;
 import com.knownniu.epay_spring_boot_starter.response.queryPidInfoResponse;
+import com.knownniu.epay_spring_boot_starter.response.querySettleResponse;
 
 @SpringBootTest
 public class EpayServiceTest {
@@ -97,5 +99,16 @@ public class EpayServiceTest {
 
         queryPidInfoResponse QueryPidInfoResponse = epayService.queryPidInfo(request);
         log.info(QueryPidInfoResponse.toString());
+    }
+
+    @Test
+    public void testQuerySettle() {
+        querySettleRequest request = new querySettleRequest();
+        request.setAct("settle");
+        request.setPid(epayProperties.getPid());
+        request.setKey(epayProperties.getKey());
+
+        querySettleResponse QuerySettleResponse = epayService.querySettle(request);
+        log.info(QuerySettleResponse.toString());
     }
 }
