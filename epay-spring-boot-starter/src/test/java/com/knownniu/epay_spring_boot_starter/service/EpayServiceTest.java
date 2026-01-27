@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.knownniu.epay_spring_boot_starter.config.EpayProperties;
+import com.knownniu.epay_spring_boot_starter.enums.DeviceTypeEnum;
+import com.knownniu.epay_spring_boot_starter.enums.PayTypeEnum;
 import com.knownniu.epay_spring_boot_starter.request.apiPayRequest;
 import com.knownniu.epay_spring_boot_starter.request.pagePayRequest;
 import com.knownniu.epay_spring_boot_starter.request.queryOrderRequest;
@@ -34,7 +36,7 @@ public class EpayServiceTest {
     public void testPagePay() {
         pagePayRequest request = new pagePayRequest();
         request.setPid(epayProperties.getPid());
-        request.setType("alipay");
+        request.setType(PayTypeEnum.ALIPAY.getType());
         request.setOut_trade_no("test1");
         request.setNotify_url("http://www.example.com/notify");
         request.setReturn_url("http://www.example.com/return");
@@ -50,7 +52,7 @@ public class EpayServiceTest {
     public void testGetPayLink() {
         pagePayRequest request = new pagePayRequest();
         request.setPid(epayProperties.getPid());
-        request.setType("wxpay");
+        request.setType(PayTypeEnum.WXPAY.getType());
         request.setOut_trade_no("test2");
         request.setNotify_url("http://www.example.com/notify");
         request.setReturn_url("http://www.example.com/return");
@@ -66,7 +68,7 @@ public class EpayServiceTest {
     public void testApiPay() {
         apiPayRequest request = new apiPayRequest();
         request.setPid(epayProperties.getPid());
-        request.setType("wxpay");
+        request.setType(PayTypeEnum.WXPAY.getType());
         request.setOut_trade_no("test3");
         request.setNotify_url("http://www.example.com/notify");
         request.setReturn_url("http://www.example.com/return");
@@ -74,7 +76,7 @@ public class EpayServiceTest {
         request.setMoney("10.00");
         request.setParam("test_param");
         request.setClientip("127.0.0.1");
-        request.setDevice("pc");
+        request.setDevice(DeviceTypeEnum.PC.getType());
 
         apiPayResponse ApiPayResponse = epayService.apiPay(request);
         log.info(ApiPayResponse.toString());
