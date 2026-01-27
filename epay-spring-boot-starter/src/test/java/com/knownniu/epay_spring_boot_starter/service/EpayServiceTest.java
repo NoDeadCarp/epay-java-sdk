@@ -16,11 +16,13 @@ import com.knownniu.epay_spring_boot_starter.request.queryOrderRequest;
 import com.knownniu.epay_spring_boot_starter.request.queryOrdersRequest;
 import com.knownniu.epay_spring_boot_starter.request.queryPidInfoRequest;
 import com.knownniu.epay_spring_boot_starter.request.querySettleRequest;
+import com.knownniu.epay_spring_boot_starter.request.refundRequest;
 import com.knownniu.epay_spring_boot_starter.response.apiPayResponse;
 import com.knownniu.epay_spring_boot_starter.response.queryOrderResponse;
 import com.knownniu.epay_spring_boot_starter.response.queryOrdersResponse;
 import com.knownniu.epay_spring_boot_starter.response.queryPidInfoResponse;
 import com.knownniu.epay_spring_boot_starter.response.querySettleResponse;
+import com.knownniu.epay_spring_boot_starter.response.refundResponse;
 
 @SpringBootTest
 public class EpayServiceTest {
@@ -127,5 +129,18 @@ public class EpayServiceTest {
 
         queryOrdersResponse QueryOrdersResponse = epayService.queryOrders(request);
         log.info(QueryOrdersResponse.toString());
+    }
+
+    @Test
+    public void testRefund() {
+        refundRequest request = new refundRequest();
+        request.setAct("refund");
+        request.setPid(epayProperties.getPid());
+        request.setKey(epayProperties.getKey());
+        request.setOut_trade_no("test3");
+        request.setMoney("10");
+
+        refundResponse RefundResponse = epayService.refund(request);
+        log.info(RefundResponse.toString());
     }
 }

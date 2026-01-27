@@ -7,6 +7,7 @@ import com.knownniu.epay_spring_boot_starter.response.queryOrderResponse;
 import com.knownniu.epay_spring_boot_starter.response.queryOrdersResponse;
 import com.knownniu.epay_spring_boot_starter.response.queryPidInfoResponse;
 import com.knownniu.epay_spring_boot_starter.response.querySettleResponse;
+import com.knownniu.epay_spring_boot_starter.response.refundResponse;
 
 import feign.Headers;
 import feign.QueryMap;
@@ -35,4 +36,7 @@ public interface EpayClient {
     @Headers("Accept: text/html;charset=utf-8")
     querySettleResponse querySettle(@QueryMap Map<String, String> params);
 
+    @RequestLine("POST /api.php")
+    @Headers("Accept: text/html;charset=utf-8")
+    refundResponse refund(@QueryMap Map<String, String> params);
 }
