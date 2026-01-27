@@ -20,6 +20,7 @@ import com.knownniu.epay_spring_boot_starter.response.queryPidInfoResponse;
 import com.knownniu.epay_spring_boot_starter.response.querySettleResponse;
 import com.knownniu.epay_spring_boot_starter.response.refundResponse;
 import com.knownniu.epay_spring_boot_starter.request.apiPayRequest;
+import com.knownniu.epay_spring_boot_starter.request.notifyRequest;
 
 public class EpayService {
 
@@ -118,5 +119,13 @@ public class EpayService {
         TreeMap<String, String> params = request.toMap();
         refundResponse RefundResponse = client.refund(params);
         return RefundResponse;
+    }
+
+    // 同步/异步通知验签
+    public boolean verifyNotify(notifyRequest request) {
+        TreeMap<String, String> params = request.toMap();
+        params = core.buildRequestParam(params);
+        if(request.getSign().equals(params.get("sign"))) return true;
+        return false;
     }
 }
