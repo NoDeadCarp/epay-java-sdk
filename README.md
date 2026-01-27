@@ -1,5 +1,5 @@
 # EPAY-JAVA-SDK
-本项目为彩虹易支付添加了Java的SDK支持
+本项目为彩虹易支付添加了Java的SDK支持，基于PHP-SDK v1.2进行迁移
 
 ## 使用方法
 1. 导入本项目
