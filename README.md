@@ -46,7 +46,7 @@ Linux/MacOS
 ./mvnw install:install-file \
   -Dfile=yourdir \
   -DgroupId=com.knownniu \
-  -DartifactId=epay-spring-boot-starter \
+  -DartifactId=epay-java-sdk \
   -Dversion=1.0.0 \
   -Dpackaging=jar
 ```
