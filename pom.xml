@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.knownniu</groupId>
+	<artifactId>epay-java-sdk</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+
+	<name>EPAY Java SDK</name>
+	<description>彩虹易支付 Java SDK - 基于PHP SDK v1.2迁移</description>
+	<url>https://github.com/knownniu/epay-java-sdk</url>
+
+	<developers>
+		<developer>
+			<name>Knownniu</name>
+			<email>Knownnniu@qq.com</email>
+			<url>https://github.com/NoDeadCarp</url>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:https://github.com/knownniu/epay-java-sdk.git</connection>
+		<developerConnection>scm:git:https://github.com/knownniu/epay-java-sdk.git</developerConnection>
+		<url>https://github.com/knownniu/epay-java-sdk</url>
+		<tag>HEAD</tag>
+	</scm>
+
+	<modules>
+		<module>epay-core</module>
+		<module>epay-spring-boot-starter</module>
+	</modules>
+
+	<properties>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>17</java.version>
+		<spring-boot.version>3.2.12</spring-boot.version>
+		<lombok.version>1.18.42</lombok.version>
+		<feign.version>13.3</feign.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- Spring Boot -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!-- Lombok -->
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- OpenFeign -->
+			<dependency>
+				<groupId>io.github.openfeign</groupId>
+				<artifactId>feign-core</artifactId>
+				<version>${feign.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.github.openfeign</groupId>
+				<artifactId>feign-jackson</artifactId>
+				<version>${feign.version}</version>
+			</dependency>
+
+			<!-- EPAY Core -->
+			<dependency>
+				<groupId>com.knownniu</groupId>
+				<artifactId>epay-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.14.1</version>
+					<configuration>
+						<source>${maven.compiler.source}</source>
+						<target>${maven.compiler.target}</target>
+						<encoding>${project.build.sourceEncoding}</encoding>
+						<annotationProcessorPaths>
+							<path>
+								<groupId>org.projectlombok</groupId>
+								<artifactId>lombok</artifactId>
+								<version>${lombok.version}</version>
+							</path>
+						</annotationProcessorPaths>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>3.3.0</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+</project>

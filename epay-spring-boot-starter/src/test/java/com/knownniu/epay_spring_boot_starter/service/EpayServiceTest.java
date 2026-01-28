@@ -8,21 +8,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.knownniu.epay_spring_boot_starter.config.EpayProperties;
-import com.knownniu.epay_spring_boot_starter.enums.DeviceTypeEnum;
-import com.knownniu.epay_spring_boot_starter.enums.PayTypeEnum;
-import com.knownniu.epay_spring_boot_starter.request.apiPayRequest;
-import com.knownniu.epay_spring_boot_starter.request.pagePayRequest;
-import com.knownniu.epay_spring_boot_starter.request.queryOrderRequest;
-import com.knownniu.epay_spring_boot_starter.request.queryOrdersRequest;
-import com.knownniu.epay_spring_boot_starter.request.queryPidInfoRequest;
-import com.knownniu.epay_spring_boot_starter.request.querySettleRequest;
-import com.knownniu.epay_spring_boot_starter.request.refundRequest;
-import com.knownniu.epay_spring_boot_starter.response.apiPayResponse;
-import com.knownniu.epay_spring_boot_starter.response.queryOrderResponse;
-import com.knownniu.epay_spring_boot_starter.response.queryOrdersResponse;
-import com.knownniu.epay_spring_boot_starter.response.queryPidInfoResponse;
-import com.knownniu.epay_spring_boot_starter.response.querySettleResponse;
-import com.knownniu.epay_spring_boot_starter.response.refundResponse;
+import com.knownniu.epay.enums.DeviceTypeEnum;
+import com.knownniu.epay.enums.PayTypeEnum;
+import com.knownniu.epay.request.apiPayRequest;
+import com.knownniu.epay.request.pagePayRequest;
+import com.knownniu.epay.request.queryOrderRequest;
+import com.knownniu.epay.request.queryOrdersRequest;
+import com.knownniu.epay.request.queryPidInfoRequest;
+import com.knownniu.epay.request.querySettleRequest;
+import com.knownniu.epay.request.refundRequest;
+import com.knownniu.epay.response.apiPayResponse;
+import com.knownniu.epay.response.queryOrderResponse;
+import com.knownniu.epay.response.queryOrdersResponse;
+import com.knownniu.epay.response.queryPidInfoResponse;
+import com.knownniu.epay.response.querySettleResponse;
+import com.knownniu.epay.response.refundResponse;
+import com.knownniu.epay.service.EpayService;
 
 @SpringBootTest
 public class EpayServiceTest {

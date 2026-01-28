@@ -2,6 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
 		<groupId>com.knownniu</groupId>
 		<artifactId>epay-java-sdk</artifactId>
@@ -9,22 +10,11 @@
 		<relativePath>..</relativePath>
 	</parent>
 
-	<artifactId>epay-spring-boot-starter</artifactId>
-	<name>EPAY Spring Boot Starter</name>
-	<description>彩虹易支付 Spring Boot 自动装配模块</description>
+	<artifactId>epay-core</artifactId>
+	<name>EPAY Core SDK</name>
+	<description>彩虹易支付核心SDK - 无框架依赖的纯Java实现</description>
+
 	<dependencies>
-		<!-- EPAY Core -->
-		<dependency>
-			<groupId>com.knownniu</groupId>
-			<artifactId>epay-core</artifactId>
-		</dependency>
-
-		<!-- Spring Boot -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
-		</dependency>
-
 		<!-- Lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -32,10 +22,26 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<!-- OpenFeign -->
+		<dependency>
+			<groupId>io.github.openfeign</groupId>
+			<artifactId>feign-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.github.openfeign</groupId>
+			<artifactId>feign-jackson</artifactId>
+		</dependency>
+
+		<!-- JSON Processing -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+
 		<!-- Testing -->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
