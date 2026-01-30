@@ -29,28 +29,6 @@ epay-java-sdk/
 
 ## 快速开始
 
-### Maven导入Jar包
-
-Windows
-```powershell
-mvnw.cmd install:install-file ^
-  -Dfile=yourdir ^
-  -DgroupId=com.knownniu ^
-  -DartifactId=epay-java-sdk ^
-  -Dversion=1.0.0 ^
-  -Dpackaging=jar
-```
-
-Linux/MacOS
-```bash
-./mvnw install:install-file \
-  -Dfile=yourdir \
-  -DgroupId=com.knownniu \
-  -DartifactId=epay-java-sdk \
-  -Dversion=1.0.0 \
-  -Dpackaging=jar
-```
-
 ### 方式一：Spring Boot 项目
 
 #### 1. 添加依赖
@@ -58,7 +36,7 @@ Linux/MacOS
 ```xml
 <dependency>
     <groupId>com.knownniu</groupId>
-    <artifactId>epay-java-sdk</artifactId>
+    <artifactId>epay-spring-boot-starter</artifactId>
     <version>1.0.0</version>
 </dependency>
 ```
@@ -104,7 +82,7 @@ public class PaymentService {
 ```xml
 <dependency>
     <groupId>com.knownniu</groupId>
-    <artifactId>epay-java-sdk</artifactId>
+    <artifactId>epay-core</artifactId>
     <version>1.0.0</version>
 </dependency>
 ```
