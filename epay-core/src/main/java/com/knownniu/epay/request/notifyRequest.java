@@ -27,7 +27,7 @@ public class notifyRequest {
 
         if (pid != null) params.put("pid", pid);
         if (type != null) params.put("type", type);
-        if (out_trade_no != null) params.put("out_trade_no", out_trade_no);
+        if (trade_no != null) params.put("trade_no", trade_no);
         if (name != null) params.put("name", name);
         if (money != null) params.put("money", money);
         if (param != null) params.put("param", param);
