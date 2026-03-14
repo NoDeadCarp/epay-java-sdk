@@ -80,7 +80,8 @@ public class EpayService {
     public apiPayResponse apiPay(apiPayRequest request) {
         TreeMap<String, String> params = request.toMap();
         params = core.buildRequestParam(params);
-        apiPayResponse ApiPayResponse = client.pay(params);
+        String params_url = core.buildRequestURLParam(params);
+        apiPayResponse ApiPayResponse = client.pay(params_url);
         return ApiPayResponse;
     }
 

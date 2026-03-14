@@ -9,16 +9,15 @@ import com.knownniu.epay.response.queryPidInfoResponse;
 import com.knownniu.epay.response.querySettleResponse;
 import com.knownniu.epay.response.refundResponse;
 
-import feign.Headers;
-import feign.QueryMap;
-import feign.RequestLine;
+import feign.*;
 
 
 public interface EpayClient {
 
     @RequestLine("POST /mapi.php")
     @Headers("Accept: text/html;charset=utf-8")
-    apiPayResponse pay(@QueryMap Map<String, String> params);
+    @Body("{body}")
+    apiPayResponse pay(@Param("body") String body);
 
     @RequestLine("POST /api.php")
     @Headers("Accept: text/html;charset=utf-8")
