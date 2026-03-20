@@ -12,13 +12,13 @@ import lombok.NoArgsConstructor;
 public class queryOrdersRequest {
 
     private String act;
-    private String pid;
+    private Integer pid;
     private String key;
-    private String limit;
-    private String page;
+    private Integer limit;
+    private Integer page;
 
-    public TreeMap<String, String> toMap() {
-        TreeMap<String, String> params = new TreeMap<>();
+    public TreeMap<String, Object> toMap() {
+        TreeMap<String, Object> params = new TreeMap<>();
 
         if (act != null) params.put("act", act);
         if (pid != null) params.put("pid", pid);

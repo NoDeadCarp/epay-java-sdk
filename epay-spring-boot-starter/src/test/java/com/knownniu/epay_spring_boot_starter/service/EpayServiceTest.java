@@ -38,7 +38,7 @@ public class EpayServiceTest {
     @Test
     public void testPagePay() {
         pagePayRequest request = new pagePayRequest();
-        request.setPid(epayProperties.getPid());
+        request.setPid(Integer.parseInt(epayProperties.getPid()));
         request.setType(PayTypeEnum.ALIPAY.getType());
         request.setOut_trade_no("test1");
         request.setNotify_url("http://www.example.com/notify");
@@ -54,7 +54,7 @@ public class EpayServiceTest {
     @Test
     public void testGetPayLink() {
         pagePayRequest request = new pagePayRequest();
-        request.setPid(epayProperties.getPid());
+        request.setPid(Integer.parseInt(epayProperties.getPid()));
         request.setType(PayTypeEnum.WXPAY.getType());
         request.setOut_trade_no("test2");
         request.setNotify_url("http://www.example.com/notify");
@@ -70,7 +70,7 @@ public class EpayServiceTest {
     @Test
     public void testApiPay() {
         apiPayRequest request = new apiPayRequest();
-        request.setPid(epayProperties.getPid());
+        request.setPid(Integer.parseInt(epayProperties.getPid()));
         request.setType(PayTypeEnum.WXPAY.getType());
         request.setOut_trade_no("test3");
         request.setNotify_url("http://www.example.com/notify");
@@ -89,7 +89,7 @@ public class EpayServiceTest {
     public void testQueryOrder() {
         queryOrderRequest request = new queryOrderRequest();
         request.setAct("order");
-        request.setPid(epayProperties.getPid());
+        request.setPid(Integer.parseInt(epayProperties.getPid()));
         request.setKey(epayProperties.getKey());
         request.setOut_trade_no("test3");
 
@@ -101,7 +101,7 @@ public class EpayServiceTest {
     public void testQueryPidInfo() {
         queryPidInfoRequest request = new queryPidInfoRequest();
         request.setAct("query");
-        request.setPid(epayProperties.getPid());
+        request.setPid(Integer.parseInt(epayProperties.getPid()));
         request.setKey(epayProperties.getKey());
 
         queryPidInfoResponse QueryPidInfoResponse = epayService.queryPidInfo(request);
@@ -112,7 +112,7 @@ public class EpayServiceTest {
     public void testQuerySettle() {
         querySettleRequest request = new querySettleRequest();
         request.setAct("settle");
-        request.setPid(epayProperties.getPid());
+        request.setPid(Integer.parseInt(epayProperties.getPid()));
         request.setKey(epayProperties.getKey());
 
         querySettleResponse QuerySettleResponse = epayService.querySettle(request);
@@ -123,10 +123,10 @@ public class EpayServiceTest {
     public void testQueryOrders() {
         queryOrdersRequest request = new queryOrdersRequest();
         request.setAct("orders");
-        request.setPid(epayProperties.getPid());
+        request.setPid(Integer.parseInt(epayProperties.getPid()));
         request.setKey(epayProperties.getKey());
-        request.setLimit("1");
-        request.setPage("1");
+        request.setLimit(1);
+        request.setPage(1);
 
         queryOrdersResponse QueryOrdersResponse = epayService.queryOrders(request);
         log.info(QueryOrdersResponse.toString());
@@ -136,7 +136,7 @@ public class EpayServiceTest {
     public void testRefund() {
         refundRequest request = new refundRequest();
         request.setAct("refund");
-        request.setPid(epayProperties.getPid());
+        request.setPid(Integer.parseInt(epayProperties.getPid()));
         request.setKey(epayProperties.getKey());
         request.setOut_trade_no("test3");
         request.setMoney("10");

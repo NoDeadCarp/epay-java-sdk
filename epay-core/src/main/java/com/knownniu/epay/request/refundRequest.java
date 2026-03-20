@@ -11,15 +11,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class refundRequest {
 
-    private String pid;
+    private Integer pid;
     private String key;
     private String act;
     private String trade_no;
     private String out_trade_no;
     private String money;
 
-    public TreeMap<String, String> toMap() {
-        TreeMap<String, String> params = new TreeMap<>();
+    public TreeMap<String, Object> toMap() {
+        TreeMap<String, Object> params = new TreeMap<>();
 
         if (pid != null) params.put("pid", pid);
         if (key != null) params.put("key", key);

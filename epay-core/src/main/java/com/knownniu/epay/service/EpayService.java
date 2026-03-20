@@ -33,7 +33,7 @@ public class EpayService {
     // 页面支付，返回HTML自动跳转页面
     public String pagePay(pagePayRequest request,String buttonText) {
         // 把DTO转成TreeMap 参数
-        TreeMap<String, String> params = request.toMap();
+        TreeMap<String, Object> params = request.toMap();
 
         // query 参数签名并加入 sign、sign_type
         params = core.buildRequestParam(params);
@@ -44,7 +44,7 @@ public class EpayService {
             .append(core.getSubmitUrl())
             .append("' method='post'>");
 
-        for (Map.Entry<String, String> entry : params.entrySet()) {
+        for (Map.Entry<String, Object> entry : params.entrySet()) {
             html.append("<input type='hidden' name='")
                 .append(entry.getKey())
                 .append("' value='")
@@ -66,7 +66,7 @@ public class EpayService {
 
     // 获取支付链接
     public String getPayLink(pagePayRequest request) {
-        TreeMap<String, String> params = request.toMap();
+        TreeMap<String, Object> params = request.toMap();
         params = core.buildRequestParam(params);
 
         StringBuffer url = new StringBuffer();
@@ -78,7 +78,7 @@ public class EpayService {
 
     // API支付（小程序APP调用）
     public apiPayResponse apiPay(apiPayRequest request) {
-        TreeMap<String, String> params = request.toMap();
+        TreeMap<String, Object> params = request.toMap();
         params = core.buildRequestParam(params);
         String params_url = core.buildRequestURLParam(params);
         apiPayResponse ApiPayResponse = client.pay(params_url);
@@ -87,42 +87,42 @@ public class EpayService {
 
     // 查询单个订单
     public queryOrderResponse queryOrder(queryOrderRequest request) {
-        TreeMap<String, String> params = request.toMap();
+        TreeMap<String, Object> params = request.toMap();
         queryOrderResponse QueryOrderResponse = client.queryOrder(params);
         return QueryOrderResponse;
     }
 
     // 查询商户信息
     public queryPidInfoResponse queryPidInfo(queryPidInfoRequest request) {
-        TreeMap<String, String> params = request.toMap();
+        TreeMap<String, Object> params = request.toMap();
         queryPidInfoResponse QueryPidInfoResponse = client.queryPidInfo(params);
         return QueryPidInfoResponse;
     }
 
     // 查询结算记录
     public querySettleResponse querySettle(querySettleRequest request) {
-        TreeMap<String, String> params = request.toMap();
+        TreeMap<String, Object> params = request.toMap();
         querySettleResponse QuerySettleResponse = client.querySettle(params);
         return QuerySettleResponse;
     }
 
     // 批量查询订单
     public queryOrdersResponse queryOrders(queryOrdersRequest request) {
-        TreeMap<String, String> params = request.toMap();
+        TreeMap<String, Object> params = request.toMap();
         queryOrdersResponse QueryOrdersResponse = client.queryOrders(params);
         return QueryOrdersResponse;
     }
 
     // 订单退款
     public refundResponse refund(refundRequest request) {
-        TreeMap<String, String> params = request.toMap();
+        TreeMap<String, Object> params = request.toMap();
         refundResponse RefundResponse = client.refund(params);
         return RefundResponse;
     }
 
     // 同步/异步通知验签
     public boolean verifyNotify(notifyRequest request) {
-        TreeMap<String, String> params = request.toMap();
+        TreeMap<String, Object> params = request.toMap();
         params = core.buildRequestParam(params);
         if(request.getSign().equals(params.get("sign"))) return true;
         return false;

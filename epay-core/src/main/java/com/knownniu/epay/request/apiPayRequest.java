@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class apiPayRequest {
 
-    private String pid;
+    private Integer pid;
     private String type;
     private String out_trade_no;
     private String notify_url;
@@ -24,8 +24,8 @@ public class apiPayRequest {
     private String clientip;
     private String device;
 
-    public TreeMap<String, String> toMap() {
-        TreeMap<String, String> params = new TreeMap<>();
+    public TreeMap<String, Object> toMap() {
+        TreeMap<String, Object> params = new TreeMap<>();
 
         if (pid != null) params.put("pid", pid);
         if (type != null) params.put("type", type);

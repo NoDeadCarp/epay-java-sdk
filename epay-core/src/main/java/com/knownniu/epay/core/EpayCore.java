@@ -28,15 +28,15 @@ public class EpayCore {
         return config.getApiUrl() + "/api.php";
     }
 
-    private String getSign(Map<String, String> params, String key) {
+    private String getSign(Map<String, Object> params, String key) {
        //  key的ASCII字符串顺序
-       TreeMap<String, String> sorted = new TreeMap<>(params);
+       TreeMap<String, Object> sorted = new TreeMap<>(params);
 
        StringBuilder signStr = new StringBuilder();
 
-       for (Map.Entry<String, String> entry : sorted.entrySet()) {
+       for (Map.Entry<String, Object> entry : sorted.entrySet()) {
            String k = entry.getKey();
-           String v = entry.getValue();
+           String v = entry.getValue().toString();
 
            if ("sign".equals(k) || "sign_type".equals(k)) {
                continue;
@@ -63,15 +63,15 @@ public class EpayCore {
        return php_md5.md5(signStr.toString());
    }
 
-   public TreeMap<String, String> buildRequestParam(TreeMap<String, String> param) {
+   public TreeMap<String, Object> buildRequestParam(TreeMap<String, Object> param) {
         String mySign = getSign(param, config.getKey());
-        TreeMap<String, String> result = new TreeMap<>(param);
+        TreeMap<String, Object> result = new TreeMap<>(param);
         result.put("sign", mySign);
         result.put("sign_type", signType);
         return result;
     }
     
-    public String buildRequestURLParam(Map<String, String> params) {
+    public String buildRequestURLParam(Map<String, Object> params) {
         return http_build_query.encode(params);
     }
 

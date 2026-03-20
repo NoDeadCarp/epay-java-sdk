@@ -6,9 +6,9 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class http_build_query {
-    public static String encode(Map<String, String> params) {
+    public static String encode(Map<String, Object> params) {
         String query = params.entrySet().stream()
-            .map(e -> e.getKey() + "=" + urlEncode(e.getValue()))
+            .map(e -> e.getKey() + "=" + urlEncode(e.getValue().toString()))
             .collect(Collectors.joining("&"));
         return query;
     }

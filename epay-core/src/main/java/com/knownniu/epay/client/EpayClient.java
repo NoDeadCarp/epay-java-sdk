@@ -21,21 +21,21 @@ public interface EpayClient {
 
     @RequestLine("POST /api.php")
     @Headers("Accept: text/html;charset=utf-8")
-    queryOrderResponse queryOrder(@QueryMap Map<String, String> params);
+    queryOrderResponse queryOrder(@QueryMap Map<String, Object> params);
 
     @RequestLine("POST /api.php")
     @Headers("Accept: text/html;charset=utf-8")
-    queryOrdersResponse queryOrders(@QueryMap Map<String, String> params);
+    queryOrdersResponse queryOrders(@QueryMap Map<String, Object> params);
 
     @RequestLine("POST /api.php")
     @Headers("Accept: text/html;charset=utf-8")
-    queryPidInfoResponse queryPidInfo(@QueryMap Map<String, String> params);
+    queryPidInfoResponse queryPidInfo(@QueryMap Map<String, Object> params);
 
     @RequestLine("POST /api.php")
     @Headers("Accept: text/html;charset=utf-8")
-    querySettleResponse querySettle(@QueryMap Map<String, String> params);
+    querySettleResponse querySettle(@QueryMap Map<String, Object> params);
 
     @RequestLine("POST /api.php")
     @Headers("Accept: text/html;charset=utf-8")
-    refundResponse refund(@QueryMap Map<String, String> params);
+    refundResponse refund(@QueryMap Map<String, Object> params);
 }

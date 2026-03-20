@@ -12,11 +12,11 @@ import lombok.NoArgsConstructor;
 public class queryPidInfoRequest {
     
     private String act;
-    private String pid;
+    private Integer pid;
     private String key;
 
-    public TreeMap<String, String> toMap() {
-        TreeMap<String, String> params = new TreeMap<>();
+    public TreeMap<String, Object> toMap() {
+        TreeMap<String, Object> params = new TreeMap<>();
 
         if (act != null) params.put("act", act);
         if (pid != null) params.put("pid", pid);
