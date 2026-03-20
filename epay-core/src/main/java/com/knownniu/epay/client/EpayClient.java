@@ -35,7 +35,8 @@ public interface EpayClient {
     @Headers("Accept: text/html;charset=utf-8")
     querySettleResponse querySettle(@QueryMap Map<String, Object> params);
 
-    @RequestLine("POST /api.php")
+    @RequestLine("POST /api.php?act=refund")
     @Headers("Accept: text/html;charset=utf-8")
-    refundResponse refund(@QueryMap Map<String, Object> params);
+    @Body("{body}")
+    refundResponse refund(@Param("body") String body);
 }

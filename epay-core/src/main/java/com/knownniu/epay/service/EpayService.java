@@ -116,7 +116,8 @@ public class EpayService {
     // 订单退款
     public refundResponse refund(refundRequest request) {
         TreeMap<String, Object> params = request.toMap();
-        refundResponse RefundResponse = client.refund(params);
+        String params_url = core.buildRequestURLParam(params);
+        refundResponse RefundResponse = client.refund(params_url);
         return RefundResponse;
     }
 
